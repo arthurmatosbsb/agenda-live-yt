@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Novo</h1>
+<div mat-dialog-actions>
+
+  <form class="example-form" [formGroup]="formGroup">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome da live</mat-label>
+      <input matInput formControlName="liveName" name="liveName">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome do canal da live</mat-label>
+      <input matInput formControlName="channelName" name="channelName">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Link da live</mat-label>
+      <input matInput formControlName="liveLink" name="liveLink">
+    </mat-form-field>
+
+    <div fxLayout="row wrap">
+      <div fxFlex="50" fxFill fxLayoutAlign="start center">
+        <mat-form-field>
+          <mat-label>Data da Live</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="liveDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+      <div fxFlex="50" fxFill fxLayoutAlign="start center">
+        <mat-form-field class="example-full-width">
+          <mat-label>Hora da live</mat-label>
+          <input matInput type="time" formControlName="liveTime" name="liveTime" #time>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+<div mat-dialog-actions >
+
+  <button mat-button color="primary" (click)="liveCreate()">add</button>
+  <button mat-button (click)="cancel()">Voltar/Cancelar</button>
+
+</div>

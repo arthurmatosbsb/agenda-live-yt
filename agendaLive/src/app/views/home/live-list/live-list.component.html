@@ -1,0 +1,76 @@
+<mat-tab-group mat-align-tabs="start" class="mat-tab-group">
+    <mat-tab label="Próximas">
+        <mat-progress-bar *ngIf="!next" mode="determinate" value="40"></mat-progress-bar>
+        <div *ngIf="next" class="layout" fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%;">
+            <ng-container class="div-layout" *ngFor="let live of livesNext">
+
+                <mat-card class="mat-card-live" fxFlex="0 1 calc(33.3% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)"
+                    fxFlex.lt-sm="100%">
+                    <mat-card-title class="mat-card-title-live">
+                        <div class="row">
+                            <p>
+                                <span style="font-size: 0.9rem;" fxFlex="70"
+                                    fxLayoutAling="start center">{{live.liveName}}</span>
+                                <span fxFlex="5"></span>
+                                <mat-chip fxFlex="25" class="mat-chip-date" selected="true" style="background-color: aliceblue; color:black">
+                                    <span style="font-size: 0.7rem;" 
+                                        fxLayoutAling="center center">{{live.liveDate | localDataTime}}</span>
+                                </mat-chip>
+                            </p>
+                            <p style="font-size:0.7rem;">Canal: <span>{{live.channelName}}</span></p>
+
+
+                        </div>
+                    </mat-card-title>
+                    <mat-card-content fxLayoutAlign="center center">
+                        <div>
+                            <iframe width="560" height="315" [src]="live.urlSafe" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Realizadas">
+        <mat-progress-bar *ngIf="!previous" mode="determinate" value="40"></mat-progress-bar>
+
+        <div *ngIf="previous" class="layout" fxLayout="row" fxLayoutAlign="start center">
+            <ng-container class="div-layout" *ngFor="let live of livesPrevious">
+
+                <mat-card class="mat-card-live" fxFlex="0 1 calc(33.3% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)"
+                    fxFlex.lt-sm="100%">
+                    <mat-card-title class="mat-card-title-live">
+                        <div class="row">
+                            <p>
+                                <span style="font-size: 0.9rem;" fxFlex="70"
+                                    fxLayoutAling="start center">{{live.liveName}}</span>
+                                <span fxFlex="5"></span>
+                                <mat-chip fxFlex="25" class="mat-chip-date" selected="true" style="background-color: aliceblue; color:black">
+                                    <span style="font-size: 0.7rem;" 
+                                        fxLayoutAling="center center">{{live.liveDate | localDataTime}}</span>
+                                </mat-chip>
+                            </p>
+                            <p style="font-size:0.7rem;">Canal: <span>{{live.channelName}}</span></p>
+
+
+                        </div>
+                    </mat-card-title>
+                    <mat-card-content fxLayoutAlign="center center">
+                        <div>
+                            <iframe width="560" height="315" [src]="live.urlSafe" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+    </mat-tab>
+
+</mat-tab-group>
